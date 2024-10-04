@@ -1,0 +1,85 @@
+{
+  "name": "taworkflow",
+  "version": "0.0.1",
+  "description": "workflow with loopback nodejs",
+  "keywords": [
+    "loopback-application",
+    "loopback"
+  ],
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "engines": {
+    "node": "18 || 20 || 22"
+  },
+  "scripts": {
+    "build": "lb-tsc",
+    "build:watch": "lb-tsc --watch",
+    "lint": "npm run eslint && npm run prettier:check",
+    "lint:fix": "npm run eslint:fix && npm run prettier:fix",
+    "prettier:cli": "lb-prettier \"**/*.ts\" \"**/*.js\"",
+    "prettier:check": "npm run prettier:cli -- -l",
+    "prettier:fix": "npm run prettier:cli -- --write",
+    "eslint": "lb-eslint --report-unused-disable-directives .",
+    "eslint:fix": "npm run eslint -- --fix",
+    "pretest": "npm run rebuild",
+    "test": "lb-mocha --allow-console-logs \"dist/__tests__\"",
+    "posttest": "npm run lint",
+    "test:dev": "lb-mocha --allow-console-logs dist/__tests__/**/*.js && npm run posttest",
+    "docker:build": "docker build -t taworkflow .",
+    "docker:run": "docker run -p 3000:3000 -d taworkflow",
+    "premigrate": "npm run build",
+    "migrate": "node ./dist/migrate",
+    "preopenapi-spec": "npm run build",
+    "openapi-spec": "node ./dist/openapi-spec",
+    "prestart": "npm run rebuild",
+    "start": "node -r source-map-support/register .",
+    "clean": "lb-clean dist *.tsbuildinfo .eslintcache",
+    "rebuild": "npm run clean && npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "author": "Vignesh <vignesh.saravanan@tekafforde.com>",
+  "license": "",
+  "files": [
+    "README.md",
+    "dist",
+    "src",
+    "!*/__tests__"
+  ],
+  "dependencies": {
+    "@loopback/boot": "^7.0.6",
+    "@loopback/core": "^6.1.3",
+    "@loopback/repository": "^7.0.6",
+    "@loopback/rest": "^14.0.6",
+    "@loopback/rest-explorer": "^7.0.6",
+    "@loopback/service-proxy": "^7.0.6",
+    "compression": "^1.7.4",
+    "cors": "^2.8.5",
+    "helmet": "^8.0.0",
+    "java": "^0.14.0",
+    "jsonpath": "^1.1.1",
+    "log4js": "^6.9.1",
+    "loopback-connector-postgresql": "^7.1.5",
+    "loopback-ds-timestamp-mixin": "^3.4.1",
+    "node-gyp": "^10.2.0",
+    "node-schedule": "^2.1.1",
+    "nodemon": "^3.1.7",
+    "pg": "^8.13.0",
+    "serve-favicon": "^2.5.0",
+    "strong-error-handler": "^5.0.11",
+    "tslib": "^2.0.0",
+    "uuid": "^10.0.0"
+  },
+  "devDependencies": {
+    "@loopback/build": "^11.0.6",
+    "@loopback/eslint-config": "^15.0.4",
+    "@loopback/testlab": "^7.0.6",
+    "@types/java": "^0.9.5",
+    "@types/node": "^16.18.101",
+    "eslint": "^8.57.0",
+    "source-map-support": "^0.5.21",
+    "typescript": "~5.2.2"
+  }
+}
