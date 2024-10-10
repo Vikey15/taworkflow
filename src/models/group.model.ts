@@ -16,14 +16,18 @@ export class Group extends TimeStampMixin(Entity) {
   })
   name: string;
 
-  // Define well-known properties here
-
   // Indexer property to allow additional data
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   [prop: string]: any;
 
   constructor(data?: Partial<Group>) {
-    super(data);
+    super(data); // Call the constructor of the base class
+
+    // Initialize timestamps if not already set
+    if (!data?.createdDate) {
+      this.createdDate = new Date(); // Set createdDate to the current date
+    }
+    this.updatedDate = new Date(); // Set updatedDate to the current date
   }
 }
 

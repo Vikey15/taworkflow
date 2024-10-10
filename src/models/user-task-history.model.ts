@@ -17,7 +17,6 @@ export class UserTaskHistory extends TimeStampMixin(Entity) {
   @property({
     type: 'string',
     id: true,
-    required: true,
     defaultFn: 'uuid', // Default function for ID generation
     postgresql: {
       columnName: 'user_task_history_id',

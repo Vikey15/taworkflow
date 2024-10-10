@@ -16,7 +16,6 @@ export class TaskDeadline extends TimeStampMixin(Entity) {
   @property({
     type: 'string',
     id: true,
-    required: true,
     defaultFn: 'uuid', // Default function to generate UUID
     postgresql: {
       columnName: 'task_deadline_id',

@@ -16,7 +16,6 @@ export class ProcessInstanceHistory extends TimeStampMixin(Entity) {
   @property({
     type: 'string',
     id: true,
-    required: true,
     defaultFn: 'uuid', // Default function for ID generation
     postgresql: {
       columnName: 'process_instance_id',
