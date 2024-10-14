@@ -5,6 +5,10 @@ This application is generated using [LoopBack 4 CLI](https://loopback.io/doc/en/
 
 ## Install dependencies
 
+Download and install Visual studio Community with "Development with c++" enabled to install the npm in the project without any error
+
+https://visualstudio.microsoft.com/downloads/
+
 By default, dependencies were installed when this application was generated.
 Whenever dependencies in `package.json` are changed, run the following command:
 
