@@ -94,8 +94,8 @@ export class ProcessInstance extends TimeStampMixin(Entity) {
   @belongsTo(() => Status, {name: 'status'})
   status_id?: string;
 
-  @belongsTo(() => WorkflowVersion, {name: 'workflowVersion'})
-  workflowVersion_id?: string;
+  @belongsTo(() => WorkflowVersion, {name: 'workflow_version'})
+  workflow_version_id?: string;
 
   @belongsTo(() => Event, {name: 'event'})
   event_id?: string;
