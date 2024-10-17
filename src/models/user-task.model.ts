@@ -250,7 +250,7 @@ export class UserTask extends TimeStampMixin(Entity) {
   status_id?: string;
 
   @belongsTo(() => ProcessInstance, {name: 'processInstance'})
-  processInstance_id?: string;
+  process_instance_id?: string;
 
   // Indexer property to allow additional data
   [prop: string]: any;

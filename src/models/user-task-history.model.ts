@@ -241,8 +241,8 @@ export class UserTaskHistory extends TimeStampMixin(Entity) {
   @belongsTo(() => Status, {name: 'status'})
   status_id?: string;
 
-  @belongsTo(() => ProcessInstance, {name: 'processInstance'})
-  processInstance_id?: string;
+  @belongsTo(() => ProcessInstance, {name: 'process_instance_id'})
+  process_instance_id?: string;
 
   // Indexer property to allow additional data
   [prop: string]: any;

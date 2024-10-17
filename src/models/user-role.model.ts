@@ -2,7 +2,15 @@ import {belongsTo, Entity, model, property} from '@loopback/repository';
 import {Role} from './role.model';
 import {User} from './user.model';
 
-@model({settings: {strict: false}})
+@model({
+  settings: {
+    postgresql: {
+      table: 'user_role', // PostgreSQL table name
+    },
+    strict: true,
+    validateUpsert: true, // Validate upserts
+  },
+})
 export class UserRole extends Entity {
   @property({
     type: 'string',
