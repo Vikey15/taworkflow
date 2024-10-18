@@ -1,0 +1,24 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const tslib_1 = require("tslib");
+tslib_1.__exportStar(require("./ping.controller"), exports);
+tslib_1.__exportStar(require("./event.controller"), exports);
+tslib_1.__exportStar(require("./api-endpoints.controller"), exports);
+tslib_1.__exportStar(require("./process-instance.controller"), exports);
+tslib_1.__exportStar(require("./process-instance-history.controller"), exports);
+tslib_1.__exportStar(require("./status.controller"), exports);
+tslib_1.__exportStar(require("./task-deadline.controller"), exports);
+tslib_1.__exportStar(require("./tenant.controller"), exports);
+tslib_1.__exportStar(require("./user-task.controller"), exports);
+tslib_1.__exportStar(require("./user-task-history.controller"), exports);
+tslib_1.__exportStar(require("./workflow.controller"), exports);
+tslib_1.__exportStar(require("./workflow-version.controller"), exports);
+tslib_1.__exportStar(require("./workflow-task-type.controller"), exports);
+tslib_1.__exportStar(require("./workflow-api.controller"), exports);
+tslib_1.__exportStar(require("./user.controller"), exports);
+tslib_1.__exportStar(require("./role.controller"), exports);
+tslib_1.__exportStar(require("./user-role.controller"), exports);
+tslib_1.__exportStar(require("./form.controller"), exports);
+tslib_1.__exportStar(require("./group.controller"), exports);
+tslib_1.__exportStar(require("./user-group.controller"), exports);
+//# sourceMappingURL=index.js.map
