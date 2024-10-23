@@ -1,4 +1,5 @@
 import {BindingScope, injectable} from '@loopback/core';
+const path = require('path');
 const java = require('java');
 
 @injectable({scope: BindingScope.TRANSIENT})
@@ -6,54 +7,46 @@ export class WorkflowService {
   private worflow: any;
 
   constructor() {
-    // Push necessary JAR files to the classpath
+    // Get the absolute path of the 'src/lib' directory
+    const libDirPath = path.join(__dirname, '../../src/lib');
 
-    java.classpath.push('D:/TA/taworkflow/src/lib/ta-workflow-1.0.jar');
-    java.classpath.push('D:/TA/taworkflow/src/lib/json-20180130.jar');
-    java.classpath.push('D:/TA/taworkflow/src/lib/c3p0-0.9.5.2.jar');
-    java.classpath.push('D:/TA/taworkflow/src/lib/velocity-1.7.jar');
-    java.classpath.push('D:/TA/taworkflow/src/lib/postgresql-42.5.0.jar');
+    // Push necessary JAR files to the classpath
+    java.classpath.push(path.join(libDirPath, 'ta-workflow-1.0.jar'));
+    java.classpath.push(path.join(libDirPath, 'json-20180130.jar'));
+    java.classpath.push(path.join(libDirPath, 'c3p0-0.9.5.2.jar'));
+    java.classpath.push(path.join(libDirPath, 'velocity-1.7.jar'));
+    java.classpath.push(path.join(libDirPath, 'postgresql-42.5.0.jar'));
+    java.classpath.push(path.join(libDirPath, 'camunda-bpmn-model-7.9.0.jar'));
+    java.classpath.push(path.join(libDirPath, 'camunda-xml-model-7.9.0.jar'));
     java.classpath.push(
-      'D:/TA/taworkflow/src/lib/camunda-bpmn-model-7.9.0.jar',
+      path.join(libDirPath, 'org.everit.json.schema-1.3.0.jar'),
     );
-    java.classpath.push('D:/TA/taworkflow/src/lib/camunda-xml-model-7.9.0.jar');
+    java.classpath.push(path.join(libDirPath, 'httpclient-4.5.10.jar'));
+    java.classpath.push(path.join(libDirPath, 'smtp-1.4.5.jar'));
+    java.classpath.push(path.join(libDirPath, 'javax.mail-1.6.2.jar'));
+    java.classpath.push(path.join(libDirPath, 'activation-1.1.1.jar'));
+    java.classpath.push(path.join(libDirPath, 'httpcore-4.4.12.jar'));
+    java.classpath.push(path.join(libDirPath, 'commons-logging-1.2.jar'));
+    java.classpath.push(path.join(libDirPath, 'json-path-2.4.0.jar'));
+    java.classpath.push(path.join(libDirPath, 'json-smart-2.2.1.jar'));
+    java.classpath.push(path.join(libDirPath, 'asm-1.0.2.jar'));
+    java.classpath.push(path.join(libDirPath, 'commons-lang-2.4.jar'));
+    java.classpath.push(path.join(libDirPath, 'commons-collections-3.2.2.jar'));
+    java.classpath.push(path.join(libDirPath, 'log4j-1.2.17.jar'));
+    java.classpath.push(path.join(libDirPath, 'slf4j-log4j12-1.7.13.jar'));
+    java.classpath.push(path.join(libDirPath, 'slf4j-api-1.7.13.jar'));
+    java.classpath.push(path.join(libDirPath, 'kafka-clients-1.1.0.jar'));
     java.classpath.push(
-      'D:/TA/taworkflow/src/lib/org.everit.json.schema-1.3.0.jar',
+      path.join(libDirPath, 'aws-java-sdk-core-1.12.437.jar'),
     );
-    java.classpath.push('D:/TA/taworkflow/src/lib/httpclient-4.5.10.jar');
-    java.classpath.push('D:/TA/taworkflow/src/lib/smtp-1.4.5.jar');
-    java.classpath.push('D:/TA/taworkflow/src/lib/javax.mail-1.6.2.jar');
-    java.classpath.push('D:/TA/taworkflow/src/lib/activation-1.1.1.jar');
-    java.classpath.push('D:/TA/taworkflow/src/lib/httpcore-4.4.12.jar');
-    java.classpath.push('D:/TA/taworkflow/src/lib/commons-logging-1.2.jar');
-    java.classpath.push('D:/TA/taworkflow/src/lib/json-path-2.4.0.jar');
-    java.classpath.push('D:/TA/taworkflow/src/lib/json-smart-2.2.1.jar');
-    java.classpath.push('D:/TA/taworkflow/src/lib/asm-1.0.2.jar');
-    java.classpath.push('D:/TA/taworkflow/src/lib/commons-lang-2.4.jar');
+    java.classpath.push(path.join(libDirPath, 'aws-java-sdk-ecr-1.12.437.jar'));
+    java.classpath.push(path.join(libDirPath, 'aws-java-sdk-kms-1.12.437.jar'));
     java.classpath.push(
-      'D:/TA/taworkflow/src/lib/commons-collections-3.2.2.jar',
+      path.join(libDirPath, 'jackson-annotations-2.12.7.jar'),
     );
-    java.classpath.push('D:/TA/taworkflow/src/lib/log4j-1.2.17.jar');
-    java.classpath.push('D:/TA/taworkflow/src/lib/slf4j-log4j12-1.7.13.jar');
-    java.classpath.push('D:/TA/taworkflow/src/lib/slf4j-api-1.7.13.jar');
-    java.classpath.push('D:/TA/taworkflow/src/lib/kafka-clients-1.1.0.jar');
-    java.classpath.push(
-      'D:/TA/taworkflow/src/lib/aws-java-sdk-core-1.12.437.jar',
-    );
-    java.classpath.push(
-      'D:/TA/taworkflow/src/lib/aws-java-sdk-ecr-1.12.437.jar',
-    );
-    java.classpath.push(
-      'D:/TA/taworkflow/src/lib/aws-java-sdk-kms-1.12.437.jar',
-    );
-    java.classpath.push(
-      'D:/TA/taworkflow/src/lib/jackson-annotations-2.12.7.jar',
-    );
-    java.classpath.push('D:/TA/taworkflow/src/lib/jackson-core-2.14.2.jar');
-    java.classpath.push(
-      'D:/TA/taworkflow/src/lib/jackson-databind-2.12.7.1.jar',
-    );
-    java.classpath.push('D:/TA/taworkflow/src/lib/joda-time-2.12.5.jar');
+    java.classpath.push(path.join(libDirPath, 'jackson-core-2.14.2.jar'));
+    java.classpath.push(path.join(libDirPath, 'jackson-databind-2.12.7.1.jar'));
+    java.classpath.push(path.join(libDirPath, 'joda-time-2.12.5.jar'));
 
     // Import the Workflow Java class
     this.worflow = java.import('com.afforde.workflow.Workflow');
